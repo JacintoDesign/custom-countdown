@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-weight: normal;
+  }
+  
+  li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+  }
+  
+  li span {
+    display: block;
+    font-size: 4.5rem;
+  } 
+  
+  /* general styling */
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: #ffd54f;
+  }
+  
+  #container {
+    color: #333;
+    margin: 0 auto;
+    padding: 0.5rem;
+    text-align: center;
+  }
