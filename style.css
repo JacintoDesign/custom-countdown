@@ -131,3 +131,13 @@ li span {
     color: rgb(188, 16, 211);
   }
 }
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 600px) {
+  video { object-fit: cover; object-position: 70%; margin-top: -1px; }
+  #video-background { height: 100vh; width: 100vw; }
+  .container { min-width: 100%; min-height: 25rem; padding: 2rem; }
+  h1 { font-size: 2.5rem; }
+  li { font-size: 1.5rem; }
+  li span { font-size: 4rem; }
+}

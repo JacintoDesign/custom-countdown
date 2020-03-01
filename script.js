@@ -60,6 +60,7 @@ function updateDOM() {
     let minutes = Math.floor((distance % (hour)) / (minute));
     let seconds = Math.floor((distance % (minute)) / second);
 
+    // If the countdown has ended, show final state
     if (distance < 0) {
       clearInterval(countdownActive)
       countdownEl.innerHTML = `
@@ -68,6 +69,7 @@ function updateDOM() {
       <button onclick="reset()" style="margin-top: 2.5rem">NEW COUNTDOWN</button>
       `
     } else {
+      // Show the regular countdown
       countdownEl.innerHTML = `
       <div class="countdown">
           <h1 id="countdown-title">${countdownTitle}</h1>
