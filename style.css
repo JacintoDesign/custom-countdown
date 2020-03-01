@@ -1,48 +1,13 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    font-weight: normal;
-  }
-  
-  li {
-    display: inline-block;
-    font-size: 1.5em;
-    list-style-type: none;
-    padding: 1em;
-    text-transform: uppercase;
-  }
-  
-  li span {
-    display: block;
-    font-size: 4.5rem;
-  } 
-  
-  /* general styling */
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  body {
-    display: flex;
-    align-items: center;
-    font-family: sans-serif;
-    background-color: #ffd54f;
-  }
-  
-  #container {
-    color: #333;
-    margin: 0 auto;
-    padding: 5rem;
-    border-radius: 5px;
-    text-align: center;
-    z-index: 2;
-    background-color: rgba(255,255,255,.85);
-  }
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+* { box-sizing: border-box; }
+html { font-size: 62.5%; }
+
+body {
+  display: flex;
+  align-items: center;
+  font-family: Nunito, sans-serif;
+}
 
 /* Video Background */
 #video-background {
@@ -66,5 +31,78 @@ video {
   top: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0,0,0,.35);
+  background-color: rgba(255, 255, 255, 0.35);
 }
+
+/* Container */
+#container {
+  color: rgb(0, 0, 0);
+  margin: 0 auto;
+  padding: 5rem;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 2;
+  background-color: rgba(255,255,255,.85);
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Form */
+input {
+  width: 100%;
+  height: 4rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  background: #fff;
+  outline: none;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="date"] {
+  text-transform: uppercase;
+  font-family: Nunito, sans-serif;
+}
+
+button {
+  width: 100%;
+  height: 4rem; 
+  border-radius: 2rem;
+  border: none;
+  text-transform: uppercase;
+  background-color: #006959;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  filter: brightness(110%);
+}
+
+/* Countdown */
+ul {
+  margin-left: -4.5rem;
+}
+
+li {
+  display: inline-block;
+  font-size: 3rem;
+  list-style-type: none;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 8rem;
+} 
+

@@ -30,15 +30,19 @@ function updateCountdown1(e) {
   e.preventDefault();
   countdownTitle1 = title.value;
   countdownDate1 = date.value;
-  countDown1 = new Date(countdownDate1).getTime();
-  updateDOM(countDown1, countdownTitle1, countdown1El);
-  setTimeout(() => {
-    countdownForm2.innerHTML = `
-    <input type="text" name="Title" id="title" placeholder="Enter Title Here">
-    <input type="text" name="Date" id="date" placeholder="Jan 18, 2021">
-    <button type="submit">Submit</button>
-    `
-  }, 1000);
+  if (countdownDate1 == '') {
+    alert('Please select a date for the countdown.');
+  } else {
+    countDown1 = new Date(countdownDate1).getTime();
+    updateDOM(countDown1, countdownTitle1, countdown1El);
+    setTimeout(() => {
+      countdownForm2.innerHTML = `
+      <input type="text" name="Title" id="title" placeholder="Enter Title Here">
+      <input type="text" name="Date" id="date" placeholder="Jan 18, 2021">
+      <button type="submit">Submit</button>
+      `
+    }, 1000);
+  }
 }
 
 function updateCountdown2(e) {
