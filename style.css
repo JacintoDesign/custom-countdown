@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 
 * { box-sizing: border-box; }
+
 html { font-size: 62.5%; }
 
 body {
@@ -35,7 +36,9 @@ video {
 }
 
 /* Container */
-#container {
+.container {
+  min-width: 60rem;
+  min-height: 33rem;
   color: rgb(0, 0, 0);
   margin: 0 auto;
   padding: 5rem;
@@ -60,6 +63,7 @@ input {
   border-radius: 2rem;
   background: #fff;
   outline: none;
+  font-family: Nunito, sans-serif;
 }
 
 ::-webkit-inner-spin-button,
@@ -69,7 +73,6 @@ input {
 
 input[type="date"] {
   text-transform: uppercase;
-  font-family: Nunito, sans-serif;
 }
 
 button {

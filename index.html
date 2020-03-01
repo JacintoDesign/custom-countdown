@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Countdowns</title>
+    <title>Custom Countdown</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,21 +11,16 @@
         <source src="time.mp4"></source>
     </video>
     <div class="video-overlay"></div>
-    <div id="container">
-        <div id="countdown1">
+    <div class="container">
+        <div id="input-container">
             <h1>Create a Custom Countdown!</h1>
-            <form id="countdownForm1">
+            <form id="countdownForm">
                 <input type="text" id="title" placeholder="Enter Title Here">
                 <input type="date" id="date">
                 <button type="submit">Submit</button>
             </form>
         </div>
-        <div id="countdown2">
-            <form id="countdownForm2"></form>
-        </div>
-        <div id="countdown3">
-            <form id="countdownForm3"></form>
-        </div>
+        <div id="countdown"></div>
     </div>
     <!-- Script -->
     <script src="script.js"></script>
