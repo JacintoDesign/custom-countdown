@@ -37,6 +37,34 @@
   #container {
     color: #333;
     margin: 0 auto;
-    padding: 0.5rem;
+    padding: 5rem;
+    border-radius: 5px;
     text-align: center;
+    z-index: 2;
+    background-color: rgba(255,255,255,.85);
   }
+
+/* Video Background */
+#video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: auto;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,.35);
+}
