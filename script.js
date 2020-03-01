@@ -13,8 +13,8 @@ countdownForm.addEventListener('submit', updateCountdown);
 
 function updateCountdown(e) {
   e.preventDefault();
-  inputContainer.style.display = "none"; 
-  countdownEl.style.display = "block";
+  inputContainer.style.display = 'none'; 
+  countdownEl.innerHTML = '';
   countdownTitle = title.value;
   countdownDate = date.value;
   if (countdownDate == '') {
@@ -50,12 +50,13 @@ function updateDOM() {
     `
 
   }, second)
+  countdownEl.style.display = 'block';
 }
 
 function resetDOM() {
-  countdownEl.style.display = "none";
-  inputContainer.style.display = "block";
+  countdownEl.style.display = 'none';
+  inputContainer.style.display = 'block';
   clearInterval(countdownActive);
-  countdownTitle = "";
-  countdownDate = "";
+  countdownTitle = '';
+  countdownDate = '';
 }
