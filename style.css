@@ -109,3 +109,25 @@ li span {
   font-size: 8rem;
 } 
 
+.complete {
+  animation: complete 4s infinite;
+}
+
+@keyframes complete {
+  0%   {
+    color: rgb(233, 12, 12);
+  }
+  25%  {
+    color: rgb(214, 193, 0);
+  }
+  50%  {
+    color: rgb(68, 231, 19);
+    transform: scale(1.5);
+  }
+  75% {
+    color: rgb(19, 79, 209);
+  }
+  100% {
+    color: rgb(188, 16, 211);
+  }
+}
