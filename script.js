@@ -6,9 +6,15 @@ const second = 1000,
 const countdownForm = document.getElementById('countdownForm');
 const countdownEl = document.getElementById('countdown');
 const inputContainer = document.getElementById('input-container');
+const dateEl = document.getElementById('date');
 
 let savedCountdownObj = [];
 let countdownActive;
+
+// Set Date Input Min & Value with Today's Date
+let today = new Date().toISOString().split('T')[0];
+dateEl.setAttribute('value', today);
+dateEl.setAttribute('min', today);
 
 // Event Listener
 countdownForm.addEventListener('submit', updateCountdown);

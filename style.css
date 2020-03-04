@@ -66,15 +66,32 @@ input {
   font-family: Nunito, sans-serif;
 }
 
-::-webkit-inner-spin-button,
-::-webkit-calendar-picker-indicator {
+/* Date Input */
+::-webkit-clear-button {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+::-webkit-inner-spin-button {
   display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  background-color: transparent;
 }
 
 input[type="date"] {
   text-transform: uppercase;
 }
 
+/* Button */
 button {
   width: 100%;
   height: 4rem; 
