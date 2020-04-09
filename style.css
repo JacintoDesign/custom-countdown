@@ -5,6 +5,8 @@
 html { font-size: 62.5%; }
 
 body {
+  min-height: 100vh;
+  overflow-y: hidden;
   display: flex;
   align-items: center;
   font-family: Nunito, sans-serif;
