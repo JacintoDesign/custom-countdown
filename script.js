@@ -1,29 +1,29 @@
-const second = 1000,
-      minute = second * 60,
-      hour = minute * 60,
-      day = hour * 24;
+const second = 1000;
+const minute = second * 60;
+const hour = minute * 60;
+const day = hour * 24;
 
-const countdownForm = document.getElementById('countdownForm');
-const countdownEl = document.getElementById('countdown');
-const inputContainer = document.getElementById('input-container');
-const dateEl = document.getElementById('date');
+const countdownForm = document.getElementById("countdownForm");
+const countdownEl = document.getElementById("countdown");
+const inputContainer = document.getElementById("input-container");
+const dateEl = document.getElementById("date");
 
 let savedCountdownObj = [];
 let countdownActive;
 
 // Set Date Input Min & Value with Today's Date
-let today = new Date().toISOString().split('T')[0];
-dateEl.setAttribute('value', today);
-dateEl.setAttribute('min', today);
+let today = new Date().toISOString().split("T")[0];
+dateEl.setAttribute("value", today);
+dateEl.setAttribute("min", today);
 
 // Event Listener
-countdownForm.addEventListener('submit', updateCountdown);
+countdownForm.addEventListener("submit", updateCountdown);
 
 function restorePreviousCountdown() {
   // Get countdown from localStorage if available
-  if (localStorage.getItem('countdown') !== null) {
-    savedCountdownObj = JSON.parse(localStorage.getItem('countdown'));
-    inputContainer.style.display = 'none';
+  if (localStorage.getItem("countdown") !== null) {
+    savedCountdownObj = JSON.parse(localStorage.getItem("countdown"));
+    inputContainer.style.display = "none";
     countdownTitle = savedCountdownObj[0].title;
     countdownDate = savedCountdownObj[0].date;
     countdownValue = new Date(countdownDate).getTime();
@@ -34,20 +34,20 @@ function restorePreviousCountdown() {
 function updateCountdown(e) {
   e.preventDefault();
   // Hide input, reset countdown HTML
-  inputContainer.style.display = 'none'; 
-  countdownEl.innerHTML = '';
+  inputContainer.style.display = "none";
+  countdownEl.innerHTML = "";
   // Set title and date, save to localStorage
   countdownTitle = title.value;
   countdownDate = date.value;
   let savedCountdown = {
     title: countdownTitle,
-    date: countdownDate
-  }
+    date: countdownDate,
+  };
   savedCountdownObj.unshift(savedCountdown);
-  localStorage.setItem('countdown', JSON.stringify(savedCountdownObj));
+  localStorage.setItem("countdown", JSON.stringify(savedCountdownObj));
   // Check if no date entered, alert
-  if (countdownDate == '') {
-    alert('Please select a date for the countdown.');
+  if (countdownDate == "") {
+    alert("Please select a date for the countdown.");
   } else {
     // Get number version of current Date, updateDOM
     countdownValue = new Date(countdownDate).getTime();
@@ -56,24 +56,23 @@ function updateCountdown(e) {
 }
 
 function updateDOM() {
-  countdownActive = setInterval(() => {    
-
+  countdownActive = setInterval(() => {
     let now = new Date().getTime(),
-        distance = countdownValue - now;
+      distance = countdownValue - now;
 
-    let days = Math.floor(distance / (day));
-    let hours = Math.floor((distance % (day)) / (hour));
-    let minutes = Math.floor((distance % (hour)) / (minute));
-    let seconds = Math.floor((distance % (minute)) / second);
+    let days = Math.floor(distance / day);
+    let hours = Math.floor((distance % day) / hour);
+    let minutes = Math.floor((distance % hour) / minute);
+    let seconds = Math.floor((distance % minute) / second);
 
     // If the countdown has ended, show final state
     if (distance < 0) {
-      clearInterval(countdownActive)
+      clearInterval(countdownActive);
       countdownEl.innerHTML = `
       <h1 class="complete">Countdown Complete!</h1>
       <h1>${countdownTitle} finished on ${countdownDate}</h1>
       <button onclick="reset()" style="margin-top: 2.5rem">NEW COUNTDOWN</button>
-      `
+      `;
     } else {
       // Show the regular countdown
       countdownEl.innerHTML = `
@@ -87,24 +86,23 @@ function updateDOM() {
           </ul>
           <button onclick="reset()">RESET</button>
       </div>
-      `
+      `;
     }
-
-  }, second)
-  countdownEl.style.display = 'block';
+  }, second);
+  countdownEl.style.display = "block";
 }
 
 function reset() {
   // Hide countdown, show input
-  countdownEl.style.display = 'none';
-  inputContainer.style.display = 'block';
+  countdownEl.style.display = "none";
+  inputContainer.style.display = "block";
   // Stop the countdown
   clearInterval(countdownActive);
   // Reset values, remove localStorage item
-  countdownTitle = '';
-  countdownDate = '';
-  localStorage.removeItem('countdown');
+  countdownTitle = "";
+  countdownDate = "";
+  localStorage.removeItem("countdown");
 }
 
-// On startup, check localStorage
+// On Load, check localStorage
 restorePreviousCountdown();
