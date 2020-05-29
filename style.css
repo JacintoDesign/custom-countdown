@@ -146,8 +146,14 @@ li span {
 
   .container {
     min-width: unset;
-    min-height: 250px;
+    width: 95vw;
+    min-height: 200px;
     padding: 20px;
+    margin: 10px;
+  }
+
+  input {
+    width: 93%;
   }
 
   h1 {

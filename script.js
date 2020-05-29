@@ -92,7 +92,7 @@ function updateCountdown(e) {
 }
 
 function reset() {
-  // Hide countdown, show input
+  // Hide countdowns, show input form
   countdownEl.hidden = true;
   completeEl.hidden = true;
   inputContainer.hidden = false;
