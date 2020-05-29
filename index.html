@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Video Background -->
-    <video loop muted autoplay id="video-background">
+    <video class="video-background" id="video-background" loop muted autoplay>
         <source src="time.mp4"></source>
     </video>
     <div class="video-overlay"></div>
@@ -25,7 +25,22 @@
             </form>
         </div>
         <!-- Countdown -->
-        <div id="countdown"></div>
+        <div class="countdown" id="countdown" hidden>
+            <h1 id="countdown-title"></h1>
+            <ul>
+                <li><span></span>Days</li>
+                <li><span></span>Hours</li>
+                <li><span></span>Minutes</li>
+                <li><span></span>Seconds</li>
+            </ul>
+            <button id="countdown-button">RESET</button>
+        </div>
+        <!-- Complete -->
+        <div class="countdown" id="complete" hidden>
+            <h1 class="complete">Countdown Complete!</h1>
+            <h1 id="complete-info"></h1>
+            <button id="complete-button">NEW COUNTDOWN</button>
+        </div>
     </div>
     <!-- Script -->
     <script src="script.js"></script>
