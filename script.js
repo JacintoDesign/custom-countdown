@@ -5,7 +5,7 @@ const day = hour * 24;
 
 const countdownForm = document.getElementById('countdownForm');
 const inputContainer = document.getElementById('input-container');
-const dateEl = document.getElementById('date');
+const dateEl = document.getElementById('date-picker');
 
 const countdownEl = document.getElementById('countdown');
 const countdownElTitle = document.getElementById('countdown-title');
@@ -19,7 +19,7 @@ const completeBtn = document.getElementById('complete-button');
 let countdownTitle = '';
 let countdownDate = '';
 let countdownValue = Date;
-let savedCountdownArray = [];
+let savedCountdown;
 let countdownActive;
 
 // Set Date Input Min & Value with Today's Date
@@ -59,10 +59,10 @@ function updateDOM() {
 function restorePreviousCountdown() {
   // Get countdown from localStorage if available
   if (localStorage.getItem('countdown')) {
-    savedCountdownArray = JSON.parse(localStorage.getItem('countdown'));
+    savedCountdown = JSON.parse(localStorage.getItem('countdown'));
     inputContainer.hidden = true;
-    countdownTitle = savedCountdownArray[0].title;
-    countdownDate = savedCountdownArray[0].date;
+    countdownTitle = savedCountdown.title;
+    countdownDate = savedCountdown.date;
     countdownValue = new Date(countdownDate).getTime();
     updateDOM();
   }
@@ -75,12 +75,11 @@ function updateCountdown(e) {
   // Set title and date, save to localStorage
   countdownTitle = e.srcElement[0].value;
   countdownDate = e.srcElement[1].value;
-  const savedCountdown = {
+  savedCountdown = {
     title: countdownTitle,
     date: countdownDate,
   };
-  savedCountdownArray.unshift(savedCountdown);
-  localStorage.setItem('countdown', JSON.stringify(savedCountdownArray));
+  localStorage.setItem('countdown', JSON.stringify(savedCountdown));
   // Check if no date entered, alert
   if (countdownDate === '') {
     alert('Please select a date for the countdown.');
