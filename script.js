@@ -1,8 +1,3 @@
-const second = 1000;
-const minute = second * 60;
-const hour = minute * 60;
-const day = hour * 24;
-
 const countdownForm = document.getElementById('countdownForm');
 const inputContainer = document.getElementById('input-container');
 const dateEl = document.getElementById('date-picker');
@@ -21,6 +16,11 @@ let countdownDate = '';
 let countdownValue = Date;
 let savedCountdown;
 let countdownActive;
+
+const second = 1000;
+const minute = second * 60;
+const hour = minute * 60;
+const day = hour * 24;
 
 // Set Date Input Min & Value with Today's Date
 const today = new Date().toISOString().split('T')[0];
@@ -56,18 +56,6 @@ function updateDOM() {
   }, second);
 }
 
-function restorePreviousCountdown() {
-  // Get countdown from localStorage if available
-  if (localStorage.getItem('countdown')) {
-    savedCountdown = JSON.parse(localStorage.getItem('countdown'));
-    inputContainer.hidden = true;
-    countdownTitle = savedCountdown.title;
-    countdownDate = savedCountdown.date;
-    countdownValue = new Date(countdownDate).getTime();
-    updateDOM();
-  }
-}
-
 function updateCountdown(e) {
   e.preventDefault();
   // Hide input, reset countdown HTML
@@ -101,6 +89,18 @@ function reset() {
   countdownTitle = '';
   countdownDate = '';
   localStorage.removeItem('countdown');
+}
+
+function restorePreviousCountdown() {
+  // Get countdown from localStorage if available
+  if (localStorage.getItem('countdown')) {
+    savedCountdown = JSON.parse(localStorage.getItem('countdown'));
+    inputContainer.hidden = true;
+    countdownTitle = savedCountdown.title;
+    countdownDate = savedCountdown.date;
+    countdownValue = new Date(countdownDate).getTime();
+    updateDOM();
+  }
 }
 
 // Event Listener

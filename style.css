@@ -42,7 +42,7 @@ video {
 .container {
   min-width: 580px;
   min-height: 304px;
-  color: rgb(0, 0, 0);
+  color: black;
   margin: 0 auto;
   padding: 25px 50px;
   border-radius: 5px;
