@@ -14,8 +14,8 @@ const completeBtn = document.getElementById('complete-button');
 let countdownTitle = '';
 let countdownDate = '';
 let countdownValue = Date;
-let savedCountdown;
 let countdownActive;
+let savedCountdown;
 
 const second = 1000;
 const minute = second * 60;
@@ -24,19 +24,19 @@ const day = hour * 24;
 
 // Set Date Input Min & Value with Today's Date
 const today = new Date().toISOString().split('T')[0];
-dateEl.setAttribute('value', today);
 dateEl.setAttribute('min', today);
 
+// Populate Countdown / Complete UI
 function updateDOM() {
   countdownActive = setInterval(() => {
     const now = new Date().getTime();
     const distance = countdownValue - now;
-
     const days = Math.floor(distance / day);
     const hours = Math.floor((distance % day) / hour);
     const minutes = Math.floor((distance % hour) / minute);
     const seconds = Math.floor((distance % minute) / second);
-
+    // Hide Input
+    inputContainer.hidden = true;
     // If the countdown has ended, show final state
     if (distance < 0) {
       countdownEl.hidden = true;
@@ -45,12 +45,12 @@ function updateDOM() {
       completeEl.hidden = false;
     } else {
       // else, show the countdown in progress
-      completeEl.hidden = true;
       countdownElTitle.textContent = `${countdownTitle}`;
       timeElements[0].textContent = `${days}`;
       timeElements[1].textContent = `${hours}`;
       timeElements[2].textContent = `${minutes}`;
       timeElements[3].textContent = `${seconds}`;
+      completeEl.hidden = true;
       countdownEl.hidden = false;
     }
   }, second);
@@ -58,8 +58,6 @@ function updateDOM() {
 
 function updateCountdown(e) {
   e.preventDefault();
-  // Hide input, reset countdown HTML
-  inputContainer.hidden = true;
   // Set title and date, save to localStorage
   countdownTitle = e.srcElement[0].value;
   countdownDate = e.srcElement[1].value;
@@ -67,6 +65,7 @@ function updateCountdown(e) {
     title: countdownTitle,
     date: countdownDate,
   };
+  console.log(savedCountdown);
   localStorage.setItem('countdown', JSON.stringify(savedCountdown));
   // Check if no date entered, alert
   if (countdownDate === '') {
@@ -81,7 +80,7 @@ function updateCountdown(e) {
 function reset() {
   // Hide countdowns, show input form
   countdownEl.hidden = true;
-  completeEl.hidden = true;
+  // completeEl.hidden = true;
   inputContainer.hidden = false;
   // Stop the countdown
   clearInterval(countdownActive);
@@ -94,8 +93,8 @@ function reset() {
 function restorePreviousCountdown() {
   // Get countdown from localStorage if available
   if (localStorage.getItem('countdown')) {
+    inputContainer.hidden = true; 
     savedCountdown = JSON.parse(localStorage.getItem('countdown'));
-    inputContainer.hidden = true;
     countdownTitle = savedCountdown.title;
     countdownDate = savedCountdown.date;
     countdownValue = new Date(countdownDate).getTime();
