@@ -27,7 +27,7 @@ const today = new Date().toISOString().split('T')[0];
 dateEl.setAttribute('min', today);
 
 // Populate Countdown / Complete UI
-function updateDOM() {
+ updateDOM = ()=> {
   countdownActive = setInterval(() => {
     const now = new Date().getTime();
     const distance = countdownValue - now;
@@ -56,7 +56,7 @@ function updateDOM() {
   }, second);
 }
 
-function updateCountdown(e) {
+ updateCountdown = (e) => {
   e.preventDefault();
   // Set title and date, save to localStorage
   countdownTitle = e.srcElement[0].value;
@@ -76,7 +76,7 @@ function updateCountdown(e) {
   }
 }
 
-function reset() {
+ reset = () => {
   // Hide countdowns, show input form
   countdownEl.hidden = true;
   completeEl.hidden = true;
@@ -89,7 +89,7 @@ function reset() {
   localStorage.removeItem('countdown');
 }
 
-function restorePreviousCountdown() {
+ restorePreviousCountdown = () => {
   // Get countdown from localStorage if available
   if (localStorage.getItem('countdown')) {
     inputContainer.hidden = true; 
